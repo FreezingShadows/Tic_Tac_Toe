@@ -1,0 +1,405 @@
+' Name: Tic Tac Toe Project
+' Objective: To create a tic tac toe game using arrays in VB
+' Programmer: Derian Fritz on 3/2/2019
+
+Option Explicit On
+Option Infer Off
+Option Strict On
+
+Public Class frmMain
+    ' Declaring Turn Counter Variable
+    Public intTurnCounter As Integer = 0
+
+    ' Creating function to lock all buttons when game is won
+    Public Function LockButtons() As String
+        ' Disables all buttons
+        btnSqOne.Enabled = False
+        btnSqTwo.Enabled = False
+        btnSqThree.Enabled = False
+        btnSqFour.Enabled = False
+        btnSqFive.Enabled = False
+        btnSqSix.Enabled = False
+        btnSqSeven.Enabled = False
+        btnSqEight.Enabled = False
+        btnSqNine.Enabled = False
+
+    End Function
+
+    ' Creating functions to change label colors when three in a row is achieved
+    Public Function HorizontalTopX() As String
+        ' Checking Horizontal Row 1 for X
+        If lblSqOne.Text = "X" And lblSqTwo.Text = "X" And lblSqThree.Text = "X" Then
+            lblSqOne.BackColor = Color.Aqua
+            lblSqTwo.BackColor = Color.Aqua
+            lblSqThree.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function HorizontalMidX() As String
+        ' Checking Horizontal Row 2 for X
+        If lblSqFour.Text = "X" And lblSqFive.Text = "X" And lblSqSix.Text = "X" Then
+            lblSqFour.BackColor = Color.Aqua
+            lblSqFive.BackColor = Color.Aqua
+            lblSqSix.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function HorizontalBottomX() As String
+        ' Checking Horizontal Row 3 for X
+        If lblSqSeven.Text = "X" And lblSqEight.Text = "X" And lblSqNine.Text = "X" Then
+            lblSqSeven.BackColor = Color.Aqua
+            lblSqEight.BackColor = Color.Aqua
+            lblSqNine.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function HorizontalTopO() As String
+        ' Checking Horizontal Row 1 for O
+        If lblSqOne.Text = "O" And lblSqTwo.Text = "O" And lblSqThree.Text = "O" Then
+            lblSqOne.BackColor = Color.LightCoral
+            lblSqTwo.BackColor = Color.LightCoral
+            lblSqThree.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function HorizontalMidO() As String
+        ' Checking Horizontal Row 2 for O
+        If lblSqFour.Text = "O" And lblSqFive.Text = "O" And lblSqSix.Text = "O" Then
+            lblSqFour.BackColor = Color.LightCoral
+            lblSqFive.BackColor = Color.LightCoral
+            lblSqSix.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function HorizontalBottomO() As String
+        ' Checking Horizontal Row 3 for O
+        If lblSqSeven.Text = "O" And lblSqEight.Text = "O" And lblSqNine.Text = "O" Then
+            lblSqSeven.BackColor = Color.LightCoral
+            lblSqEight.BackColor = Color.LightCoral
+            lblSqNine.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalLeftX() As Label
+        ' Checking Vertical Column 1 for X
+        If lblSqOne.Text = "X" And lblSqFour.Text = "X" And lblSqSeven.Text = "X" Then
+            lblSqOne.BackColor = Color.Aqua
+            lblSqFour.BackColor = Color.Aqua
+            lblSqSeven.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalMidX() As Label
+        ' Checking Vertical Column 2 for X
+        If lblSqTwo.Text = "X" And lblSqFive.Text = "X" And lblSqEight.Text = "X" Then
+            lblSqTwo.BackColor = Color.Aqua
+            lblSqFive.BackColor = Color.Aqua
+            lblSqEight.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalRightX() As Label
+        ' Checking Vertical Column 3 for X
+        If lblSqThree.Text = "X" And lblSqSix.Text = "X" And lblSqNine.Text = "X" Then
+            lblSqThree.BackColor = Color.Aqua
+            lblSqSix.BackColor = Color.Aqua
+            lblSqNine.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalLeftO() As Label
+        ' Checking Vertical Column 1 for O
+        If lblSqOne.Text = "O" And lblSqFour.Text = "O" And lblSqSeven.Text = "O" Then
+            lblSqOne.BackColor = Color.LightCoral
+            lblSqFour.BackColor = Color.LightCoral
+            lblSqSeven.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalMidO() As Label
+        ' Checking Vertical Column 2 for O
+        If lblSqTwo.Text = "O" And lblSqFive.Text = "O" And lblSqEight.Text = "O" Then
+            lblSqTwo.BackColor = Color.LightCoral
+            lblSqFive.BackColor = Color.LightCoral
+            lblSqEight.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function VerticalRightO() As Label
+        ' Checking Vertical Column 3 for O
+        If lblSqThree.Text = "O" And lblSqSix.Text = "O" And lblSqNine.Text = "O" Then
+            lblSqThree.BackColor = Color.LightCoral
+            lblSqSix.BackColor = Color.LightCoral
+            lblSqNine.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function DiagonalRightX() As Label
+        ' Checking Diagonal Right for X
+        If lblSqOne.Text = "X" And lblSqFive.Text = "X" And lblSqNine.Text = "X" Then
+            lblSqOne.BackColor = Color.Aqua
+            lblSqFive.BackColor = Color.Aqua
+            lblSqNine.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function DiagonalLeftX() As Label
+        ' Checking Diagonal Left for X
+        If lblSqThree.Text = "X" And lblSqFive.Text = "X" And lblSqSeven.Text = "X" Then
+            lblSqThree.BackColor = Color.Aqua
+            lblSqFive.BackColor = Color.Aqua
+            lblSqSeven.BackColor = Color.Aqua
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function DiagonalRightO() As Label
+        ' Checking Diagonal Right for O
+        If lblSqOne.Text = "O" And lblSqFive.Text = "O" And lblSqNine.Text = "O" Then
+            lblSqOne.BackColor = Color.LightCoral
+            lblSqFive.BackColor = Color.LightCoral
+            lblSqNine.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    Public Function DiagonalLeftO() As Label
+        ' Checking Diagonal Left for O
+        If lblSqThree.Text = "O" And lblSqFive.Text = "O" And lblSqSeven.Text = "O" Then
+            lblSqThree.BackColor = Color.LightCoral
+            lblSqFive.BackColor = Color.LightCoral
+            lblSqSeven.BackColor = Color.LightCoral
+            LockButtons()
+        End If
+
+    End Function
+
+    'Creating Function to Test Winning Combos
+    Private Function CheckColors() As Button
+        ' Horizontal Checks
+        HorizontalTopX()
+        HorizontalTopO()
+        HorizontalMidX()
+        HorizontalMidO()
+        HorizontalBottomX()
+        HorizontalBottomO()
+
+        'Vertical Checks
+        VerticalLeftX()
+        VerticalLeftO()
+        VerticalMidX()
+        VerticalMidO()
+        VerticalRightX()
+        VerticalRightO()
+
+        'Diagonal Checks
+        DiagonalRightX()
+        DiagonalRightO()
+        DiagonalLeftX()
+        DiagonalLeftO()
+
+    End Function
+
+    Private Sub btnSqOne_Click(sender As Object, e As EventArgs) Handles btnSqOne.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqOne.Text = "X"
+        Else
+            lblSqOne.Text = "O"
+        End If
+        btnSqOne.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqTwo_Click(sender As Object, e As EventArgs) Handles btnSqTwo.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqTwo.Text = "X"
+        Else
+            lblSqTwo.Text = "O"
+        End If
+        btnSqTwo.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqThree_Click(sender As Object, e As EventArgs) Handles btnSqThree.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqThree.Text = "X"
+        Else
+            lblSqThree.Text = "O"
+        End If
+        btnSqThree.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqFour_Click(sender As Object, e As EventArgs) Handles btnSqFour.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqFour.Text = "X"
+        Else
+            lblSqFour.Text = "O"
+        End If
+        btnSqFour.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqFive_Click(sender As Object, e As EventArgs) Handles btnSqFive.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqFive.Text = "X"
+        Else
+            lblSqFive.Text = "O"
+        End If
+        btnSqFive.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqSix_Click(sender As Object, e As EventArgs) Handles btnSqSix.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqSix.Text = "X"
+        Else
+            lblSqSix.Text = "O"
+        End If
+        btnSqSix.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqSeven_Click(sender As Object, e As EventArgs) Handles btnSqSeven.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqSeven.Text = "X"
+        Else
+            lblSqSeven.Text = "O"
+        End If
+        btnSqSeven.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqEight_Click(sender As Object, e As EventArgs) Handles btnSqEight.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqEight.Text = "X"
+        Else
+            lblSqEight.Text = "O"
+        End If
+        btnSqEight.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnSqNine_Click(sender As Object, e As EventArgs) Handles btnSqNine.Click
+        ' Button Press Fill-in Event
+        If intTurnCounter Mod 2 = 0 Then
+            lblSqNine.Text = "X"
+        Else
+            lblSqNine.Text = "O"
+        End If
+        btnSqNine.Enabled = False
+        intTurnCounter = intTurnCounter + 1
+        lblCount.Text = intTurnCounter.ToString
+        CheckColors()
+
+    End Sub
+
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        ' Clears all labels
+        lblSqOne.Text = String.Empty
+        lblSqTwo.Text = String.Empty
+        lblSqThree.Text = String.Empty
+        lblSqFour.Text = String.Empty
+        lblSqFive.Text = String.Empty
+        lblSqSix.Text = String.Empty
+        lblSqSeven.Text = String.Empty
+        lblSqEight.Text = String.Empty
+        lblSqNine.Text = String.Empty
+
+        ' Clears all label colors
+        lblSqOne.BackColor = Color.White
+        lblSqTwo.BackColor = Color.White
+        lblSqThree.BackColor = Color.White
+        lblSqFour.BackColor = Color.White
+        lblSqFive.BackColor = Color.White
+        lblSqSix.BackColor = Color.White
+        lblSqSeven.BackColor = Color.White
+        lblSqEight.BackColor = Color.White
+        lblSqNine.BackColor = Color.White
+
+        ' Enables all buttons
+        btnSqOne.Enabled = True
+        btnSqTwo.Enabled = True
+        btnSqThree.Enabled = True
+        btnSqFour.Enabled = True
+        btnSqFive.Enabled = True
+        btnSqSix.Enabled = True
+        btnSqSeven.Enabled = True
+        btnSqEight.Enabled = True
+        btnSqNine.Enabled = True
+
+        ' Resets Counter
+        intTurnCounter = 0
+
+        ' Resets Counter Box
+        lblCount.Text = String.Empty
+
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        ' Closes program when button is clicked
+        Me.Close()
+
+    End Sub
+
+End Class
